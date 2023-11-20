@@ -1,0 +1,217 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "lcd[0]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[1]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[2]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[3]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[4]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[5]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[6]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[7]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[8]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[9]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[10]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd[11]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[4]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[5]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[6]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[7]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[8]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[9]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[10]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[11]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[12]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[13]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[14]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[15]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[16]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[17]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[18]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[19]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[20]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[21]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[22]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[23]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[24]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[25]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[26]",
+					"strict" : false
+				},
+				{
+					"name" : "hex[27]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[0]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[1]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[2]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[3]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "switch",
+					"strict" : false
+				},
+				{
+					"name" : "key",
+					"strict" : false
+				},
+				{
+					"name" : "reset_n",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tms",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tck",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdi",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdo",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
