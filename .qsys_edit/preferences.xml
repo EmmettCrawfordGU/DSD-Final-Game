@@ -9,6 +9,6 @@
  </systemtable>
  <library
    expandedCategories="Library,Library/Processors and Peripherals,Project,Library/Processors and Peripherals/Peripherals" />
- <window width="1131" height="1039" x="-7" y="0" />
+ <window width="974" height="1039" x="953" y="0" />
  <generation synthesis="VHDL" />
 </preferences>

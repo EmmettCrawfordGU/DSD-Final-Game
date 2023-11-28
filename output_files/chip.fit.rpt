@@ -1,5 +1,5 @@
 Fitter report for chip
-Sun Nov 19 16:08:23 2023
+Tue Nov 28 11:29:04 2023
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
 
 
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                       ;
 +------------------------------------+-------------------------------------------------+
-; Fitter Status                      ; Successful - Sun Nov 19 16:08:23 2023           ;
+; Fitter Status                      ; Successful - Tue Nov 28 11:29:04 2023           ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Standard Edition ;
 ; Revision Name                      ; chip                                            ;
 ; Top-level Entity Name              ; chip                                            ;
@@ -154,7 +154,7 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 20          ;
 ; Maximum allowed            ; 10          ;
 ;                            ;             ;
-; Average used               ; 1.09        ;
+; Average used               ; 1.10        ;
 ; Maximum used               ; 10          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
@@ -162,11 +162,11 @@ refer to the applicable agreement for further details.
 ;     Processor 2            ;   1.1%      ;
 ;     Processor 3            ;   1.1%      ;
 ;     Processor 4            ;   1.1%      ;
-;     Processor 5            ;   1.0%      ;
-;     Processor 6            ;   1.0%      ;
-;     Processor 7            ;   1.0%      ;
-;     Processor 8            ;   1.0%      ;
-;     Processors 9-10        ;   1.0%      ;
+;     Processor 5            ;   1.1%      ;
+;     Processor 6            ;   1.1%      ;
+;     Processor 7            ;   1.1%      ;
+;     Processor 8            ;   1.1%      ;
+;     Processors 9-10        ;   1.1%      ;
 +----------------------------+-------------+
 
 
@@ -226,7 +226,7 @@ refer to the applicable agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/Users/mvonwahlde/Documents/Final_Group_Project/output_files/chip.pin.
+The pin-out file can be found in C:/Users/mvonwahlde/Documents/DSD-Final-Game/output_files/chip.pin.
 
 
 +----------------------------------------------------------------------------+
@@ -2031,20 +2031,20 @@ Info (332111): Found 1 clocks
     Info (332111):   Period   Clock Name
     Info (332111): ======== ============
     Info (332111):  100.000 altera_reserved_tck
-Info (176353): Automatically promoted node clk~input (placed in PIN Y2 (CLK2, DIFFCLK_1p)) File: C:/Users/mvonwahlde/Documents/Final_Group_Project/chip.vhd Line: 10
+Info (176353): Automatically promoted node clk~input (placed in PIN Y2 (CLK2, DIFFCLK_1p)) File: C:/Users/mvonwahlde/Documents/DSD-Final-Game/chip.vhd Line: 10
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G4
 Info (176353): Automatically promoted node altera_internal_jtag~TCKUTAP 
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
-Info (176353): Automatically promoted node game:u0|altera_reset_controller:rst_controller|r_sync_rst  File: C:/Users/mvonwahlde/Documents/Final_Group_Project/game/synthesis/submodules/altera_reset_controller.v Line: 288
+Info (176353): Automatically promoted node game:u0|altera_reset_controller:rst_controller|r_sync_rst  File: C:/Users/mvonwahlde/Documents/DSD-Final-Game/game/synthesis/submodules/altera_reset_controller.v Line: 288
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node game:u0|altera_reset_controller:rst_controller|WideOr0~0 File: C:/Users/mvonwahlde/Documents/Final_Group_Project/game/synthesis/submodules/altera_reset_controller.v Line: 290
-        Info (176357): Destination node game:u0|game_cpu:cpu|game_cpu_cpu:cpu|W_rf_wren File: C:/Users/mvonwahlde/Documents/Final_Group_Project/game/synthesis/submodules/game_cpu_cpu.v Line: 3451
+        Info (176357): Destination node game:u0|altera_reset_controller:rst_controller|WideOr0~0 File: C:/Users/mvonwahlde/Documents/DSD-Final-Game/game/synthesis/submodules/altera_reset_controller.v Line: 290
+        Info (176357): Destination node game:u0|game_cpu:cpu|game_cpu_cpu:cpu|W_rf_wren File: C:/Users/mvonwahlde/Documents/DSD-Final-Game/game/synthesis/submodules/game_cpu_cpu.v Line: 3451
         Info (176357): Destination node game:u0|game_cpu:cpu|game_cpu_cpu:cpu|game_cpu_cpu_nios2_oci:the_game_cpu_cpu_nios2_oci|game_cpu_cpu_nios2_oci_debug:the_game_cpu_cpu_nios2_oci_debug|altera_std_synchronizer:the_altera_std_synchronizer|din_s1 File: c:/intelfpga/18.0/quartus/libraries/megafunctions/altera_std_synchronizer.v Line: 45
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176218): Packed 8 registers into blocks of type Block RAM
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:03
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
@@ -2065,18 +2065,18 @@ Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Warning (169177): 1 pins must meet Intel FPGA requirements for 3.3-, 3.0-, and 2.5-V interfaces. For more information, refer to AN 447: Interfacing Cyclone IV E Devices with 3.3/3.0/2.5-V LVTTL/LVCMOS I/O Systems.
-    Info (169178): Pin clk uses I/O standard 3.3-V LVTTL at Y2 File: C:/Users/mvonwahlde/Documents/Final_Group_Project/chip.vhd Line: 10
-Info (144001): Generated suppressed messages file C:/Users/mvonwahlde/Documents/Final_Group_Project/output_files/chip.fit.smsg
+    Info (169178): Pin clk uses I/O standard 3.3-V LVTTL at Y2 File: C:/Users/mvonwahlde/Documents/DSD-Final-Game/chip.vhd Line: 10
+Info (144001): Generated suppressed messages file C:/Users/mvonwahlde/Documents/DSD-Final-Game/output_files/chip.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 6251 megabytes
-    Info: Processing ended: Sun Nov 19 16:08:24 2023
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:13
+    Info: Peak virtual memory: 6257 megabytes
+    Info: Processing ended: Tue Nov 28 11:29:05 2023
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:14
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in C:/Users/mvonwahlde/Documents/Final_Group_Project/output_files/chip.fit.smsg.
+The suppressed messages can be found in C:/Users/mvonwahlde/Documents/DSD-Final-Game/output_files/chip.fit.smsg.
 
 

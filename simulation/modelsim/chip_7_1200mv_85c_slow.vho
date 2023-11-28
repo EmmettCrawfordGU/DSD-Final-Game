@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition"
 
--- DATE "11/19/2023 16:08:33"
+-- DATE "11/28/2023 11:29:14"
 
 -- 
 -- Device: Altera EP4CE115F29C7 Package FBGA780
@@ -3235,17 +3235,17 @@ SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jt
 SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|virtual_ir_tdo_sel_reg\ : std_logic_vector(1 DOWNTO 0);
 SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|hub_mode_reg\ : std_logic_vector(2 DOWNTO 0);
 SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|jtag_ir_reg\ : std_logic_vector(9 DOWNTO 0);
-SIGNAL \u0|cpu|cpu|ALT_INV_av_ld_rshift8~1_combout\ : std_logic;
-SIGNAL \u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|ALT_INV_address\ : std_logic_vector(8 DOWNTO 8);
 SIGNAL \u0|cpu|cpu|ALT_INV_D_iw\ : std_logic_vector(2 DOWNTO 2);
+SIGNAL \u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|ALT_INV_address\ : std_logic_vector(8 DOWNTO 8);
+SIGNAL \u0|cpu|cpu|ALT_INV_av_ld_rshift8~1_combout\ : std_logic;
 SIGNAL \u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|the_game_cpu_cpu_debug_slave_wrapper|game_cpu_cpu_debug_slave_phy|ALT_INV_virtual_state_sdr~0_combout\ : std_logic;
-SIGNAL \u0|rst_controller|ALT_INV_r_sync_rst~clkctrl_outclk\ : std_logic;
-SIGNAL \ALT_INV_altera_internal_jtag~TCKUTAPclkctrl_outclk\ : std_logic;
 SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|ALT_INV_state\ : std_logic_vector(4 DOWNTO 3);
 SIGNAL \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|ALT_INV_clr_reg~q\ : std_logic;
 SIGNAL \ALT_INV_altera_internal_jtag~TMSUTAP\ : std_logic;
 SIGNAL \u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|the_game_cpu_cpu_nios2_ocimem|ALT_INV_ociram_wr_en~1_combout\ : std_logic;
 SIGNAL \u0|rst_controller|ALT_INV_r_early_rst~q\ : std_logic;
+SIGNAL \u0|rst_controller|ALT_INV_r_sync_rst~clkctrl_outclk\ : std_logic;
+SIGNAL \ALT_INV_altera_internal_jtag~TCKUTAPclkctrl_outclk\ : std_logic;
 
 BEGIN
 
@@ -4516,18 +4516,18 @@ ww_devpor <= devpor;
 \altera_internal_jtag~TCKUTAPclkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \altera_internal_jtag~TCKUTAP\);
 
 \u0|rst_controller|r_sync_rst~clkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \u0|rst_controller|r_sync_rst~q\);
-\u0|cpu|cpu|ALT_INV_av_ld_rshift8~1_combout\ <= NOT \u0|cpu|cpu|av_ld_rshift8~1_combout\;
-\u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|ALT_INV_address\(8) <= NOT \u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|address\(8);
 \u0|cpu|cpu|ALT_INV_D_iw\(2) <= NOT \u0|cpu|cpu|D_iw\(2);
+\u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|ALT_INV_address\(8) <= NOT \u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|address\(8);
+\u0|cpu|cpu|ALT_INV_av_ld_rshift8~1_combout\ <= NOT \u0|cpu|cpu|av_ld_rshift8~1_combout\;
 \u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|the_game_cpu_cpu_debug_slave_wrapper|game_cpu_cpu_debug_slave_phy|ALT_INV_virtual_state_sdr~0_combout\ <= NOT \u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|the_game_cpu_cpu_debug_slave_wrapper|game_cpu_cpu_debug_slave_phy|virtual_state_sdr~0_combout\;
-\u0|rst_controller|ALT_INV_r_sync_rst~clkctrl_outclk\ <= NOT \u0|rst_controller|r_sync_rst~clkctrl_outclk\;
-\ALT_INV_altera_internal_jtag~TCKUTAPclkctrl_outclk\ <= NOT \altera_internal_jtag~TCKUTAPclkctrl_outclk\;
 \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|ALT_INV_state\(3) <= NOT \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|state\(3);
 \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|ALT_INV_clr_reg~q\ <= NOT \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|clr_reg~q\;
 \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|ALT_INV_state\(4) <= NOT \auto_hub|instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|instrumentation_fabric|alt_sld_fab|sldfabric|jtag_hub_gen:real_sld_jtag_hub|shadow_jsm|state\(4);
 \ALT_INV_altera_internal_jtag~TMSUTAP\ <= NOT \altera_internal_jtag~TMSUTAP\;
 \u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|the_game_cpu_cpu_nios2_ocimem|ALT_INV_ociram_wr_en~1_combout\ <= NOT \u0|cpu|cpu|the_game_cpu_cpu_nios2_oci|the_game_cpu_cpu_nios2_ocimem|ociram_wr_en~1_combout\;
 \u0|rst_controller|ALT_INV_r_early_rst~q\ <= NOT \u0|rst_controller|r_early_rst~q\;
+\u0|rst_controller|ALT_INV_r_sync_rst~clkctrl_outclk\ <= NOT \u0|rst_controller|r_sync_rst~clkctrl_outclk\;
+\ALT_INV_altera_internal_jtag~TCKUTAPclkctrl_outclk\ <= NOT \altera_internal_jtag~TCKUTAPclkctrl_outclk\;
 
 -- Location: IOOBUF_X0_Y52_N16
 \lcd[0]~output\ : cycloneive_io_obuf
