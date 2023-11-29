@@ -11,7 +11,7 @@
 #define SEVEN_SEG_2 0xFFFFFFA4 // 111...0100100
 #define SEVEN_SEG_3 0xFFFFFFB0 // 111...0110000
 #define SEVEN_SEG_4 0xFFFFFF99 // 111...0011001
-#define SEVEN_SEG_5 0xFFFFF
+#define SEVEN_SEG_5 0xFFFFFF
 #define SEVEN_SEG_6 0xFFFFF
 #define SEVEN_SEG_7 0xFFFFF
 #define SEVEN_SEG_8 0xFFFFF
@@ -57,12 +57,34 @@ void setLEDs(uint8_t led_pattern){
 	IOWR_ALTERA_AVALON_PIO_DATA(LEDS_BASE, (led_pattern&0x0F));
 }
 
-void setSevenSeg(uint8_t thousands, uint8_t hundreds, uint8_t tens, uint8_t ones){
+void setSevenSeg(uint32_t num){
+	char data[8];
+	uint8_t seven_seg_patterns[] = {
+	        SEVEN_SEG_0,
+	        SEVEN_SEG_1,
+	        SEVEN_SEG_2,
+	        SEVEN_SEG_3,
+	        SEVEN_SEG_4,
+	        SEVEN_SEG_5,
+	        SEVEN_SEG_6,
+	        SEVEN_SEG_7,
+	        SEVEN_SEG_8,
+	        SEVEN_SEG_9
+	    };
+	uint32_t ones,tens,hundreds,thousands;
+
+	//alt_putstr("Ones: ");
+	//itoa(ones,data,2);
+	//alt_putstr(itoa(ones, data, 2));
+	ones = num % 10;
+	tens = (num/10) % 10;
+	hundreds = (num/100) % 10;
+	thousands = (num/1000) % 10;
 	uint32_t hex_data = 0xFFFFFFFF;
-	hex_data &= SEVEN_SEG_1;
-	hex_data = (((hex_data << 7) | 0x7F) & SEVEN_SEG_2);
-	hex_data = (((hex_data << 7) | 0x7F) & SEVEN_SEG_3);
-	hex_data = (((hex_data << 7) | 0x7F) & SEVEN_SEG_4);
+	hex_data &=  seven_seg_patterns[ones];
+	hex_data = (((hex_data << 7) | 0x7F) & seven_seg_patterns[tens]);
+	hex_data = (((hex_data << 7) | 0x7F) & seven_seg_patterns[hundreds]);
+	hex_data = (((hex_data << 7) | 0x7F) & seven_seg_patterns[thousands]);
 
 	IOWR_ALTERA_AVALON_PIO_DATA(HEX_BASE, hex_data);
 }
@@ -76,7 +98,7 @@ int main(){
 
 
 	alt_putstr("Ciao from Nios II!\n");
-
+	setSevenSeg(4321);
 
 	while(1) {
 		switch_data = readSwitch();

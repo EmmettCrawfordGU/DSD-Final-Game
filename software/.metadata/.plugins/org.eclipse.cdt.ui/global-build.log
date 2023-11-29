@@ -1,35 +1,89 @@
-12:04:53 **** Incremental Build of configuration Nios II for project game-sw ****
+13:28:56 **** Incremental Build of configuration Nios II for project game-sw ****
 make all 
 Info: Building ../game-sw_bsp/
 C:/intelFPGA/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../game-sw_bsp/
 [BSP build complete]
 Info: Compiling hello_world.c to obj/default/hello_world.o
 nios2-elf-gcc -xc -MP -MMD -c -I../game-sw_bsp//HAL/inc -I../game-sw_bsp/ -I../game-sw_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world.o hello_world.c
-hello_world.c: In function 'main':
-hello_world.c:33:7: warning: unused variable 'data' [-Wunused-variable]
+hello_world.c: In function 'setSevenSeg':
+hello_world.c:9:21: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define SEVEN_SEG_0 0xFFFFF
+                     ^
+hello_world.c:63:10: note: in expansion of macro 'SEVEN_SEG_0'
+          SEVEN_SEG_0,
+          ^
+hello_world.c:10:21: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define SEVEN_SEG_1 0xFFFFFFF9 // 111...1111001
+                     ^
+hello_world.c:64:10: note: in expansion of macro 'SEVEN_SEG_1'
+          SEVEN_SEG_1,
+          ^
+hello_world.c:11:21: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define SEVEN_SEG_2 0xFFFFFFA4 // 111...0100100
+                     ^
+hello_world.c:65:10: note: in expansion of macro 'SEVEN_SEG_2'
+          SEVEN_SEG_2,
+          ^
+hello_world.c:12:21: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define SEVEN_SEG_3 0xFFFFFFB0 // 111...0110000
+                     ^
+hello_world.c:66:10: note: in expansion of macro 'SEVEN_SEG_3'
+          SEVEN_SEG_3,
+          ^
+hello_world.c:13:21: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define SEVEN_SEG_4 0xFFFFFF99 // 111...0011001
+                     ^
+hello_world.c:67:10: note: in expansion of macro 'SEVEN_SEG_4'
+          SEVEN_SEG_4,
+          ^
+hello_world.c:14:21: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define SEVEN_SEG_5 0xFFFFFF
+                     ^
+hello_world.c:68:10: note: in expansion of macro 'SEVEN_SEG_5'
+          SEVEN_SEG_5,
+          ^
+hello_world.c:15:21: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define SEVEN_SEG_6 0xFFFFF
+                     ^
+hello_world.c:69:10: note: in expansion of macro 'SEVEN_SEG_6'
+          SEVEN_SEG_6,
+          ^
+hello_world.c:16:21: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define SEVEN_SEG_7 0xFFFFF
+                     ^
+hello_world.c:70:10: note: in expansion of macro 'SEVEN_SEG_7'
+          SEVEN_SEG_7,
+          ^
+hello_world.c:17:21: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define SEVEN_SEG_8 0xFFFFF
+                     ^
+hello_world.c:71:10: note: in expansion of macro 'SEVEN_SEG_8'
+          SEVEN_SEG_8,
+          ^
+hello_world.c:18:21: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define SEVEN_SEG_9 0xFFFFF
+                     ^
+hello_world.c:72:10: note: in expansion of macro 'SEVEN_SEG_9'
+          SEVEN_SEG_9
+          ^
+hello_world.c:61:7: warning: unused variable 'data' [-Wunused-variable]
   char data[8];
        ^
-hello_world.c:30:10: warning: variable 'key_data' set but not used [-Wunused-but-set-variable]
-  uint8_t key_data;
-          ^
-hello_world.c:29:10: warning: variable 'switch_data' set but not used [-Wunused-but-set-variable]
-  uint8_t switch_data;
-          ^
 Info: Linking game-sw.elf
 nios2-elf-g++  -T'../game-sw_bsp//linker.x' -msys-crt0='../game-sw_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../game-sw_bsp/   -Wl,-Map=game-sw.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o game-sw.elf obj/default/hello_world.o -lm -msys-lib=m
-nios2-elf-insert game-sw.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name game --quartus_project_dir "C:/Users/mvonwahlde/Documents/DSD-Final-Game" --jdi ../..//output_files/chip.jdi --sopcinfo C:/Users/mvonwahlde/Documents/DSD-Final-Game/software/game-sw_bsp/../../game.sopcinfo
-Info: (game-sw.elf) 29 KBytes program size (code + initialized data).
-Info:               63 KBytes free for stack + heap.
+nios2-elf-insert game-sw.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name game --quartus_project_dir "C:/Users/ecrawford/Documents/GitClone11-28/DSD-Final-Game" --jdi ../..//output_files/chip.jdi --sopcinfo C:/Users/ecrawford/Documents/GitClone11-28/DSD-Final-Game/software/game-sw_bsp/../../game.sopcinfo
+Info: (game-sw.elf) 30 KBytes program size (code + initialized data).
+Info:               62 KBytes free for stack + heap.
 Info: Creating game-sw.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source game-sw.elf >game-sw.objdump
 [game-sw build complete]
-12:05:35 **** Build of configuration Nios II for project game-sw ****
+13:29:04 **** Build of configuration Nios II for project game-sw ****
 make all 
 Info: Building ../game-sw_bsp/
 C:/intelFPGA/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../game-sw_bsp/
 [BSP build complete]
 [game-sw build complete]
-12:05:36 **** Incremental Build of configuration Nios II for project game-sw ****
+13:29:06 **** Incremental Build of configuration Nios II for project game-sw ****
 make all 
 Info: Building ../game-sw_bsp/
 C:/intelFPGA/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../game-sw_bsp/
