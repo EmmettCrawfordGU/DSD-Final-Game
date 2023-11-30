@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE115F29) Path("C:/Users/ecrawford/Documents/GitClone11-28/DSD-Final-Game/output_files/") File("chip.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE115F29) Path("C:/Users/mvonwahlde/Documents/DSD-Final-Game/output_files/") File("chip.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

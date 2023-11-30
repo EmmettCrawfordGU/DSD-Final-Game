@@ -6,18 +6,16 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-const uint32_t HexArray[] = {
-	0xFFFFFFC0,
-	0xFFFFFFF9,
-	0xFFFFFFA4,
-	0xFFFFFFB0,
-	0xFFFFFF99,
-	0xFFFFFF92,
-	0xFFFFFF82,
-	0xFFFFFFF8,
-	0xFFFFFF80,
-	0xFFFFFF98
-};
+#define SEVEN_SEG_0 0xFFFFF
+#define SEVEN_SEG_1 0xFFFFFFF9 // 111...1111001
+#define SEVEN_SEG_2 0xFFFFFFA4 // 111...0100100
+#define SEVEN_SEG_3 0xFFFFFFB0 // 111...0110000
+#define SEVEN_SEG_4 0xFFFFFF99 // 111...0011001
+#define SEVEN_SEG_5 0xFFFFF
+#define SEVEN_SEG_6 0xFFFFF
+#define SEVEN_SEG_7 0xFFFFF
+#define SEVEN_SEG_8 0xFFFFF
+#define SEVEN_SEG_9 0xFFFFF
 
 #define LCD_TIMER  0
 #define GAME_TIMER 1
@@ -99,23 +97,12 @@ void setLEDs(uint8_t led_pattern){
 	IOWR_ALTERA_AVALON_PIO_DATA(LEDS_BASE, (led_pattern&0x0F));
 }
 
-void setSevenSeg(uint32_t num){
-	int ones, tens, hundreds, thousands;
-
-	ones = num % 10;
-	tens = (num/10) % 10;
-	hundreds = (num/100) % 10;
-	thousands = (num/1000) % 10;
-
+void setSevenSeg(uint8_t thousands, uint8_t hundreds, uint8_t tens, uint8_t ones){
 	uint32_t hex_data = 0xFFFFFFFF;
-	if(num > 999)
-		hex_data &= HexArray[thousands];
-	if(num > 99)
-		hex_data = (((hex_data << 7) | 0x7F) & HexArray[hundreds]);
-	if(num > 9)
-		hex_data = (((hex_data << 7) | 0x7F) & HexArray[tens]);
-
-	hex_data = (((hex_data << 7) | 0x7F) & HexArray[ones]);
+	hex_data &= SEVEN_SEG_1;
+	hex_data = (((hex_data << 7) | 0x7F) & SEVEN_SEG_2);
+	hex_data = (((hex_data << 7) | 0x7F) & SEVEN_SEG_3);
+	hex_data = (((hex_data << 7) | 0x7F) & SEVEN_SEG_4);
 
 	IOWR_ALTERA_AVALON_PIO_DATA(HEX_BASE, hex_data);
 }
