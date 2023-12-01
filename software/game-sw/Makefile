@@ -142,7 +142,8 @@ ACDS_VERSION := 18.0
 ELF := game-sw.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := hello_world.c
+C_SRCS += hello_world.c
+C_SRCS += hw.c
 CXX_SRCS :=
 ASM_SRCS :=
 

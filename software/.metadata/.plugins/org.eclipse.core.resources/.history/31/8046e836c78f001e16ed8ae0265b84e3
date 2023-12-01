@@ -1,0 +1,49 @@
+#ifndef HW_H__
+#define HW_H__
+
+
+#include "system.h"
+#include <sys/alt_stdio.h>
+#include <sys/alt_irq.h>
+#include "altera_avalon_timer_regs.h"
+#include "altera_avalon_pio_regs.h"
+#include <stdint.h>
+#include <stdlib.h>
+
+
+#define NUM_LCD_SETUP_COMMANDS 14
+#define LCD_TIMER  0
+#define GAME_TIMER 1
+#define CLOCK_FREQ 50000000
+
+const uint16_t commands[NUM_LCD_SETUP_COMMANDS] = {
+	0x0838,// 1,0,0,0,00111000
+	0x0038,// 0,0,0,0,00111000
+	0x0838,// 1,0,0,0,00111000
+	0x0038,// 0,0,0,0,00111000
+	0x0838,// 1,0,0,0,00111000
+	0x0038,// 0,0,0,0,00111000
+	0x0838,// 1,0,0,0,00111000
+	0x0038,// 0,0,0,0,00111000
+	0x0801,// 1,0,0,0,00000001
+	0x0001,// 0,0,0,0,00000001
+	0x080C,// 1,0,0,0,00001100
+	0x000C,// 0,0,0,0,00001100
+	0x0906,// 1,0,0,1,00000110
+	0x0106// 0,0,0,1,00000110
+};
+
+const uint32_t HexArray[] = {
+	0xFFFFFFC0,
+	0xFFFFFFF9,
+	0xFFFFFFA4,
+	0xFFFFFFB0,
+	0xFFFFFF99,
+	0xFFFFFF92,
+	0xFFFFFF82,
+	0xFFFFFFF8,
+	0xFFFFFF80,
+	0xFFFFFF98
+};
+
+#endif
