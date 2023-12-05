@@ -27,6 +27,7 @@ void setLEDs(uint8_t led_pattern);
 void setSevenSeg(uint32_t num);
 void lcdInit(void);
 void lcdSetAddr(uint8_t row, uint8_t col);
+void lcdWriteStr(char str[]);
 void lcdWrite(uint8_t data);
 void lcdClear();
 void initTimers(void);

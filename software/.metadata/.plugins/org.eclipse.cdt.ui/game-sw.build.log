@@ -1,9 +1,9 @@
-14:54:13 **** Incremental Build of configuration Nios II for project game-sw ****
+12:31:29 **** Incremental Build of configuration Nios II for project game-sw ****
 make all 
 Info: Building ../game-sw_bsp/
 C:/intelFPGA/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../game-sw_bsp/
 [BSP build complete]
 [game-sw build complete]
 
-14:54:14 Build Finished (took 692ms)
+12:31:30 Build Finished (took 694ms)
 
