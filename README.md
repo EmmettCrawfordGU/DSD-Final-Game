@@ -1,8 +1,8 @@
 # DSD-Final-Game By Hayato Tsujii, Emmett Crawford, Matthew VonWahlde, Cameron Zhang
 
-This game runs on the Altera DE2-115.
+This game runs on the Altera DE2-115. We 
 
-# Objective
+## Objective
 1. Avoid the asteroids that come your way!
 2. Survive as long as you can!
 
