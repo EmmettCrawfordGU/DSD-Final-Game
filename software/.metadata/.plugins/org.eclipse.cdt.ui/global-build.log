@@ -1,25 +1,27 @@
-12:31:21 **** Incremental Build of configuration Nios II for project game-sw ****
+19:15:51 **** Incremental Build of configuration Nios II for project game-sw ****
 make all 
 Info: Building ../game-sw_bsp/
 C:/intelFPGA/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../game-sw_bsp/
 [BSP build complete]
 Info: Compiling hello_world.c to obj/default/hello_world.o
 nios2-elf-gcc -xc -MP -MMD -c -I../game-sw_bsp//HAL/inc -I../game-sw_bsp/ -I../game-sw_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world.o hello_world.c
+Info: Compiling hw.c to obj/default/hw.o
+nios2-elf-gcc -xc -MP -MMD -c -I../game-sw_bsp//HAL/inc -I../game-sw_bsp/ -I../game-sw_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hw.o hw.c
 Info: Linking game-sw.elf
 nios2-elf-g++  -T'../game-sw_bsp//linker.x' -msys-crt0='../game-sw_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../game-sw_bsp/   -Wl,-Map=game-sw.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o game-sw.elf obj/default/hello_world.o obj/default/hw.o -lm -msys-lib=m
 nios2-elf-insert game-sw.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name game --quartus_project_dir "C:/Users/mvonwahlde/Documents/DSD-Final-Game" --jdi ../..//output_files/chip.jdi --sopcinfo C:/Users/mvonwahlde/Documents/DSD-Final-Game/software/game-sw_bsp/../../game.sopcinfo
-Info: (game-sw.elf) 35 KBytes program size (code + initialized data).
+Info: (game-sw.elf) 34 KBytes program size (code + initialized data).
 Info:               58 KBytes free for stack + heap.
 Info: Creating game-sw.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source game-sw.elf >game-sw.objdump
 [game-sw build complete]
-12:31:28 **** Build of configuration Nios II for project game-sw ****
+19:16:03 **** Build of configuration Nios II for project game-sw ****
 make all 
 Info: Building ../game-sw_bsp/
 C:/intelFPGA/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../game-sw_bsp/
 [BSP build complete]
 [game-sw build complete]
-12:31:29 **** Incremental Build of configuration Nios II for project game-sw ****
+19:16:05 **** Incremental Build of configuration Nios II for project game-sw ****
 make all 
 Info: Building ../game-sw_bsp/
 C:/intelFPGA/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../game-sw_bsp/

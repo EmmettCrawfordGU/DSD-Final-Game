@@ -7,22 +7,24 @@
 
 #define PLAYER_COLUMN 1
 
-#define BLANK      0x00
+#define BLANK      0x20
 #define PLAYER     0xF6
 #define ASTEROID_0 0x2A
 #define ASTEROID_1 0xEF
 #define ASTEROID_2 0xF2
 #define BLACK_HOLE 0xFF
 
-uint8_t game_matrix[LCD_ROWS][LCD_COLS];
+uint8_t game_matrix[LCD_ROWS][LCD_COLS] = {
+	{BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK},
+	{BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK}
+};
 uint8_t lives = 4;
 uint32_t score = 0;
+uint32_t count = 0;
 
 void update_matrix(void);
 void death(void);
 void delayMs(uint32_t milliseconds);
-void deathAnimationBottom(void);
-void deathAnimationTop(void);
 void gameOver(void);
 uint8_t updatePlayer(uint8_t data);
 void updateLCD(void);
@@ -30,6 +32,8 @@ void start(void);
 void randomNumInit(void);
 uint8_t **createAsteroid(void);
 void free_array(uint8_t** array);
+void draw_player(uint8_t data);
+void deathAnimation(uint8_t row);
 
 
 int main(){
@@ -37,6 +41,8 @@ int main(){
 	uint8_t hit;
 	initTimers();
 	lcdInit();
+
+	IOWR_ALTERA_AVALON_PIO_DATA(HEX_BASE, 0x0FFFFFFF);
 
 	alt_putstr("Ciao from Nios II!\n");
 
@@ -50,6 +56,8 @@ int main(){
 
 	start();
 	lcdClear();
+	switch_data = readSwitch();
+	draw_player(switch_data);
 	randomNumInit();
 
 
@@ -95,31 +103,41 @@ int main(){
 
 
 void start(void){
-	uint8_t key_data;
+	uint8_t key_data = 1;
 	// game name: "ASTRODODGE"
-	uint8_t message1[] = {0x2A, 0x2A, 0x2A, 0x41, 0x53, 0x54, 0x52, 0x4F, 0x44, 0x4F, 0x44, 0x47, 0x45, 0x2A, 0x2A, 0x2A};
+	//uint8_t message1[] = {0x2A, 0x2A, 0x2A, 0x41, 0x53, 0x54, 0x52, 0x4F, 0x44, 0x4F, 0x44, 0x47, 0x45, 0x2A, 0x2A, 0x2A};
 	// "Press KEY2!"
-	uint8_t message2[] = {0x50, 0x72, 0x65, 0x73, 0x73, 0xFE, 0x4B, 0x45, 0x59, 0x32, 0x21, 0x21};
+	//uint8_t message2[] = {0x50, 0x72, 0x65, 0x73, 0x73, 0xFE, 0x4B, 0x45, 0x59, 0x32, 0x21, 0x21};
 
-	key_data = readKey();
+	//key_data = readKey();
 
 	// clears and displays
 	lcdClear();
 	lcdSetAddr(0, 0);
 	// Hello
+
+	lcdWriteStr("** ASTRODODGE **\0");
+	/*
 	for (int i = 0; i < 16; i++){
 		lcdWrite(message1[i]);
 	}
-
+	*/
 	// set to the next line
 	lcdSetAddr(1, 2);
 	// "Press KEY2!"
+	/*
 	for (int i = 0; i < 11; i++){
 		lcdWrite(message2[i]);
 	}
+	*/
+	lcdWriteStr("Press KEY2!");
 
 	while(key_data == 1) {
 		key_data = readKey();
+		count++;
+		if(count >= 1000000){
+			count = 0;
+		}
 	}
 }
 
@@ -127,7 +145,7 @@ void start(void){
 // Sets the seed for the random number generation
 void randomNumInit(void){
 	// seed the random number generator with the current time
-	srand(time(NULL));
+	srand(count);
 }
 
 // creates a 2x1 array with an asteroid randomly in one of the rows
@@ -151,7 +169,7 @@ uint8_t **createAsteroid(void){
 	// clear the newAsteroid array
     for(int i = 0; i < 2; ++i) {
     	newAsteroid[i] = (uint8_t*)malloc(sizeof(uint8_t));
-    	newAsteroid[i][0] = 0xFE;	// blank spaces
+    	newAsteroid[i][0] = BLANK;	// blank spaces
     }
 
 	newAsteroid[randomRow][0] = asteroids[randomAsteroid];
@@ -192,13 +210,25 @@ void update_matrix(void){
 		game_matrix[1][LCD_COLS - 1] = new_col[1][0]; // update bottom right bit
 		free_array(new_col);
 	} else {
-		game_matrix[0][LCD_COLS - 1] = ' '; // update top right bit
-		game_matrix[1][LCD_COLS - 1] = ' '; // update bottom right bit
+		game_matrix[0][LCD_COLS - 1] = BLANK; // update top right bit
+		game_matrix[1][LCD_COLS - 1] = BLANK; // update bottom right bit
 		count--;
 	}
 
 }
 
+
+void draw_player(uint8_t data){
+	lcdSetAddr((~data) & 0x01, PLAYER_COLUMN);
+
+	if(data == 0x00){
+		lcdSetAddr(1, PLAYER_COLUMN);
+		lcdWrite(PLAYER);
+	} else {
+		lcdSetAddr(0, PLAYER_COLUMN);
+		lcdWrite(PLAYER);
+	}
+}
 
 uint8_t updatePlayer(uint8_t data){
 	// Switch is backwards from the LCD (LCD 1 = lower row, switch 1 = upwards direction)
@@ -207,14 +237,18 @@ uint8_t updatePlayer(uint8_t data){
 	// If the player moved
 	if(game_matrix[row][PLAYER_COLUMN] != BLANK){
 		if(game_matrix[row][PLAYER_COLUMN] == BLACK_HOLE){
+			game_matrix[row][PLAYER_COLUMN] = PLAYER;
 			return 0x02;
 		} else {
+			game_matrix[row][PLAYER_COLUMN] = PLAYER;
 			return 0x01;
 		}
 	} else {
 		game_matrix[row][PLAYER_COLUMN] = PLAYER;
 		return 0x00;
 	}
+
+
 }
 
 
@@ -231,88 +265,66 @@ void delayMs(uint32_t milliseconds) {
 void death(void){
 	//check where player dies
 	//row 0, column 1
-	if (game_matrix[0][1] == 0xF6)
-	{
-		deathAnimationTop();
-		if(lives == 0)
-		{
-			gameOver();
-		}
-		else
-		{
-			lcdSetAddr(0,4);
-			lcdWrite('L');
-			lcdWrite('I');
-			lcdWrite('V');
-			lcdWrite('E');
-			lcdWrite('S');
-			lcdWrite(':');
-			lcdWrite(' ');
-			lcdWrite(lives+48);
+	uint8_t row;
 
-			lcdSetAddr(1,0);
-			lcdWrite('P');
-			lcdWrite('R');
-			lcdWrite('E');
-			lcdWrite('S');
-			lcdWrite('S');
-			lcdWrite(' ');
-			lcdWrite('K');
-			lcdWrite('E');
-			lcdWrite('Y');
-			lcdWrite('2');
-			lcdWrite(' ');
-			lcdWrite('2');
-			lcdWrite(' ');
-			lcdWrite('C');
-			lcdWrite('O');
-			lcdWrite('N');
-			//press key 2 is unpressed
-			while(readKey() == 1);
-		}
-
+	if(game_matrix[0][PLAYER_COLUMN] == PLAYER){
+		row = 0;
+	} else {
+		row = 1;
 	}
 
-	else
-	{
-		deathAnimationBottom();
-		if(lives == 0)
-		{
-			gameOver();
-		}
-		else
-		{
-			lcdSetAddr(0,4);
-			lcdWrite('L');
-			lcdWrite('I');
-			lcdWrite('V');
-			lcdWrite('E');
-			lcdWrite('S');
-			lcdWrite(':');
-			lcdWrite(' ');
-			//displays lives
-			lcdWrite(lives+48);
+	deathAnimation(row);
 
-			lcdSetAddr(1,0);
-			lcdWrite('P');
-			lcdWrite('R');
-			lcdWrite('E');
-			lcdWrite('S');
-			lcdWrite('S');
-			lcdWrite(' ');
-			lcdWrite('K');
-			lcdWrite('E');
-			lcdWrite('Y');
-			lcdWrite('2');
-			lcdWrite(' ');
-			lcdWrite('2');
-			lcdWrite(' ');
-			lcdWrite('C');
-			lcdWrite('O');
-			lcdWrite('N');
-			//press key 2 is unpressed
-			while(readKey() == 1);
+	if(lives == 0){
+		gameOver();
+	} else {
+		lcdClear();
+		lcdSetAddr(0,4);
+
+		lcdWriteStr("LIVES: \0");
+		/*
+		lcdWrite('L');
+		lcdWrite('I');
+		lcdWrite('V');
+		lcdWrite('E');
+		lcdWrite('S');
+		lcdWrite(':');
+		lcdWrite(' ');
+		*/
+		//displays lives
+		lcdWrite(lives+48);
+
+		lcdSetAddr(1,0);
+		lcdWriteStr("   PRESS KEY2   \0");
+				/*
+				lcdWrite('P');
+				lcdWrite('R');
+				lcdWrite('E');
+				lcdWrite('S');
+				lcdWrite('S');
+				lcdWrite(' ');
+				lcdWrite('K');
+				lcdWrite('E');
+				lcdWrite('Y');
+				lcdWrite('2');
+				lcdWrite(' ');
+				lcdWrite('2');
+				lcdWrite(' ');
+				lcdWrite('C');
+				lcdWrite('O');
+				lcdWrite('N');
+				*/
+				//press key 2 is unpressed
+		while(readKey() == 1);
+
+		lcdClear();
+		for(int i = 0; i < LCD_ROWS; i++){
+			for(int j = 0; j < LCD_COLS; j++){
+				game_matrix[i][j] = BLANK;
+			}
 		}
+		uint8_t switch_data = readSwitch();
+		draw_player(switch_data);
 	}
 }
 
@@ -320,6 +332,8 @@ void gameOver(void){
 	lcdClear();
 	//g
 	lcdSetAddr(0,4);
+	lcdWriteStr("GAMEOVER\0");
+	/*
 	lcdWrite('G');
 	lcdWrite('A');
 	lcdWrite('M');
@@ -328,10 +342,12 @@ void gameOver(void){
 	lcdWrite('V');
 	lcdWrite('E');
 	lcdWrite('R');
-
+	*/
 	//key2 to restart
 	//k
 	lcdSetAddr(1,1);
+	lcdWriteStr("KEY0 TO RESTART\0");
+	/*
 	lcdWrite('K');
 	lcdWrite('E');
 	lcdWrite('Y');
@@ -347,77 +363,58 @@ void gameOver(void){
 	lcdWrite('A');
 	lcdWrite('R');
 	lcdWrite('T');
+	*/
 	while(1);
 }
 
 
-void deathAnimationTop(void){
-		//small
-	lcdSetAddr(0,1);
-	lcdWrite(0xA1);
-	delayMs(1000);
-	//medium
-	lcdSetAddr(0,1);
-	lcdWrite(0x6F);
-	delayMs(1000);
-	//large
-	lcdSetAddr(0,1);
-	lcdWrite(0x4F);
-	delayMs(1000);
-	//medium
-	lcdSetAddr(0,1);
-	lcdWrite(0x6F);
-	delayMs(1000);
-	//small
-	lcdSetAddr(0,1);
-	lcdWrite(0xA1);
-	delayMs(1000);
-	//medium
-	lcdSetAddr(0,1);
-	lcdWrite(0x6F);
-	delayMs(1000);
-	//large
-	lcdSetAddr(0,1);
-	lcdWrite(0x4F);
-	delayMs(1000);
-}
+void deathAnimation(uint8_t row){
 
-void deathAnimationBottom(void){
+	uint32_t delay = 100;
 	//small
-	lcdSetAddr(1,1);
+	lcdSetAddr(row,1);
 	lcdWrite(0xA1);
-	delayMs(1000);
+	delayMs(delay);
 	//medium
-	lcdSetAddr(1,1);
+	lcdSetAddr(row,1);
+	lcdWrite(0x6F);
+	delayMs(delay);
+	//large
+	lcdSetAddr(row,1);
+	lcdWrite(0x4F);
+	delayMs(delay);
+	//XL
+	lcdSetAddr(row,1);
+	lcdWrite('X');
+	delayMs(delay);
+	//large
+	lcdSetAddr(row,1);
+	lcdWrite(0x4F);
+	delayMs(delay);
+	//medium
+	lcdSetAddr(row,1);
+	lcdWrite(0x6F);
+	delayMs(delay);
+	//small
+	lcdSetAddr(row,1);
+	lcdWrite(0xA1);
+	delayMs(delay);
+	//medium
+	/*lcdSetAddr(0,1);
 	lcdWrite(0x6F);
 	delayMs(1000);
 	//large
-	lcdSetAddr(1,1);
+	lcdSetAddr(0,1);
 	lcdWrite(0x4F);
 	delayMs(1000);
-	//medium
-	lcdSetAddr(1,1);
-	lcdWrite(0x6F);
-	delayMs(1000);
-	//small
-	lcdSetAddr(1,1);
-	lcdWrite(0xA1);
-	delayMs(1000);
-	//medium
-	lcdSetAddr(1,1);
-	lcdWrite(0x6F);
-	delayMs(1000);
-	//large
-	lcdSetAddr(1,1);
-	lcdWrite(0x4F);
-	delayMs(1000);
+	*/
 }
 
 
 void updateLCD(void){
 	static uint8_t prev_matrix[LCD_ROWS][LCD_COLS] = {
 			{BLANK, BLANK,  BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK},
-			{BLANK, PLAYER, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK}
+			{BLANK, BLANK,  BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK}
 	};
 
 	uint8_t newPlayerRow  = (game_matrix[0][PLAYER_COLUMN] == PLAYER) ? (0) : (1);
@@ -431,7 +428,7 @@ void updateLCD(void){
 
 		// Clear previous player's image
 		lcdSetAddr(prevPlayerRow, PLAYER_COLUMN);
-		lcdWrite(PLAYER);
+		lcdWrite(BLANK);
 	}
 
 	// drawing asteroids

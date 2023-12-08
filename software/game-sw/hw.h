@@ -1,3 +1,8 @@
+// Header file for the hardware drivers
+// Authors: Matthew VonWahlde, Cameron Zheng, Hayato Tsujii, Emmett Crawford
+// Last modified: 12/7/2023
+// Description : This file contains the function prototypes for the hardware drivers
+
 #ifndef HW_H__
 #define HW_H__
 
@@ -11,12 +16,13 @@
 #include <stdlib.h>
 
 
-#define NUM_LCD_SETUP_COMMANDS 14
-#define LCD_TIMER  0
-#define GAME_TIMER 1
-#define CLOCK_FREQ 50000000
+#define NUM_LCD_SETUP_COMMANDS 14 /* The number of commands needed to initialize the LCD */
+#define LCD_TIMER               0 /* An ID for the LCD timer */
+#define GAME_TIMER              1 /* An ID for the game timer */
+#define CLOCK_FREQ       50000000 /* The frequency of the clock (50 MHz) */
 
 
+// Function prototypes for hw.c
 void clearSema(uint8_t timerNum);
 uint8_t getSema(uint8_t timerNum);
 void handleGameTimer(void* isr_context);

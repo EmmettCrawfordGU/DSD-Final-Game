@@ -145,6 +145,14 @@ void lcdSetAddr(uint8_t row, uint8_t col){
 }
 
 
+void lcdWriteStr(char str[]){
+	int i = 0;
+	while(str[i] != '\0'){
+		lcdWrite((uint8_t)str[i++]);
+	}
+}
+
+
 void lcdWrite(uint8_t data){
 	// 1, 0, 1, 1, data
 	uint16_t lcdData = 0x0000;
