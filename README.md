@@ -27,6 +27,22 @@ This game runs on the Altera DE2-115.
   - Switch 17 
 3. Reset game 
   - Key 0
+    
+## Troubleshooting
+![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/64e848a2-e586-48fc-a1a0-836b11fca29c)
+### ELF process failed
+- Run Configuration
+- Check "Enable browse for file system ELF file"
+- Click the ... button
+- Click DSD-Final-Game-main folder
+- Click DSD-Final-Game-main folder again
+- Click Software folder
+- Click game-sw folder
+- Click game-sw.elf and press select on the bottom right
+- Click Apply Then Click Run 
 
+### BSP error
+- Right click blinky-sw_bsp
+- Hover over NIOS II
+- Click "Generate QSF
 
-![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/14b2eaee-3ee7-444d-bee9-d4ee5cca40b4)
