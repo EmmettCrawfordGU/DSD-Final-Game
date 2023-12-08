@@ -29,3 +29,4 @@ This game runs on the Altera DE2-115.
   - Key 0
 
 
+![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/14b2eaee-3ee7-444d-bee9-d4ee5cca40b4)
