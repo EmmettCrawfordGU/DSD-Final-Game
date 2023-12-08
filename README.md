@@ -8,18 +8,41 @@ This game runs on the Altera DE2-115.
 
 
 ## How to run on your computer 
-1. Download ZIP file from Github and unzip
-2. Open Quartus
-3. Open project in Quartus
-4. Run TCL script
-5. Compile code
-6. Upload the code to the Programmer
-7. Open Nios II Software Build tools for Eclipse
-8. Build project
-9. Run project as Nios II hardware
-10. Start game!
+- Download ZIP file.
+- Unzip the folder by right clicking the ZIP file and selecting "Extract All..."
+- Select the source destination and click "Extract."
+- Once that is complete, open Quartus Prime 18.0.
+- In the home tab, select "Open Project."
+![Open Project](image-1.png)
+- Navigate to the downloaded folder, and double click to enter.
+- Open the file .../DSD-Final-Game-main/chip.qpf
+- Now, in Quartus, navigate to Tools->Programmer.
+- Quartus should identify the chip.sof file automatically.
+![Programmer](image-2.png)
+- If it did not, click "Add File..."
+- Open the file .../DSD-Final-Game-main/output_files/chip.sof
+- Make sure Altera DE2-115 board is turned on.
+- If the Programmer has not identified the target board, click "Hardware Setup..." then double click USB-Blaster. Close that window.
+- Click start to upload the custom chip to the FPGA board.
+- Sometimes, the upload fails, so click start again if that is the case.
+- After the upload is successful, close the programmer.
+- A window may pop up. Select Yes to save changes to the chip.cdf file.
+![Save Changes](image-3.png)
+- Now, navigate to Tools->Nios II Software Build Tools for Eclipse.
+- Once Eclipse is open, it will prompt you to select a workspace.
+- Select "Browse...", then select the folder .../DSD-Final-Game-main/software. Click "OK" to select that workspace.
+![Software folder](image-4.png)
+ - Click "OK" again to open the workspace.
+ - Navigate to Run->Run Configurations... 
+ - Expand "Nios II Hardware" on the right and select game-sw Nios II Hardware configuration.
+![Hardware config](image-6.png)
+ - Click the "..." in the "File system ELF file name:" section.
+ ![ELF file browse](image-7.png)
+ - From the folder, select ...DSD-Final-Game-main/software/game-sw/game-sw.elf and click "Select."
+ - Click "Apply" and then "Run."
+ - The executable and linkable format file for the game should now upload to the board.
+ - Enjoy the game!
    
-
 ## How to play
 1. To start game
   - Key 2
@@ -43,10 +66,14 @@ This game runs on the Altera DE2-115.
 - Click game-sw.elf and press select on the bottom right
 - Click Apply Then Click Run 
 
+<<<<<<< HEAD
+=======
 ### BSP error
 ![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/487f85dd-3177-447c-b069-914981ddf773)
 
 - Right click blinky-sw_bsp folder on the left
 - Hover over NIOS II
-- Click "Generate QSF
+- Click "Generate QSF"
 
+
+>>>>>>> 0967f524f1490088d8821c55c19f17c894182e7f
