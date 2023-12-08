@@ -6,6 +6,14 @@ This game runs on the Altera DE2-115.
 1. Avoid the asteroids that come your way!
 2. Survive as long as you can!
 
+# Features
+1. 10Hz LCD Gameplay
+2. 4 Lives indicated on LEDG 0-3
+3. Death animation played on death
+4. 3 Different asteroid sprites
+5. Special 1/16 chance black hole : instant Game Over
+6. Randomly generated asteroids
+7. Score 0 to 9999 on 7-Segment Display
 
 ## How to run on your computer 
 - Download ZIP file.
@@ -45,11 +53,11 @@ This game runs on the Altera DE2-115.
    
 ## How to play
 1. To start game
-  - Key 2
+  - Press Key 2 to start playing
 2. Move up and down
-  - Switch 17 
+  - Use Switch 17 to move the spaceship up and down to avoid the asteroids coming right to left
 3. Reset game 
-  - Key 0
+  - To reset the game press Key 0
     
 ## Troubleshooting in Eclipse
 ### ELF process failed
