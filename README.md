@@ -30,7 +30,7 @@ This game runs on the Altera DE2-115.
 ![Save Changes](image-3.png)
 - Now, navigate to Tools->Nios II Software Build Tools for Eclipse.
 - Once Eclipse is open, it will prompt you to select a workspace.
-- Select "Browse...", then select the folder .../DSD-Final-Game-main/software. Click "OK" to select that workspace.
+- Select "Browse...", then select the folder where the projects were extracted .../DSD-Final-Game-main/software. Click "OK" to select that workspace.
 ![Software folder](image-4.png)
  - Click "OK" again to open the workspace.
  - Navigate to Run->Run Configurations... 
@@ -38,7 +38,7 @@ This game runs on the Altera DE2-115.
 ![Hardware config](image-6.png)
  - Click the "..." in the "File system ELF file name:" section.
  ![ELF file browse](image-7.png)
- - From the folder, select ...DSD-Final-Game-main/software/game-sw/game-sw.elf and click "Select."
+ - Return to where the files were extracted, from the folder, select ...DSD-Final-Game-main/software/game-sw/game-sw.elf and click "Select."
  - Click "Apply" and then "Run."
  - The executable and linkable format file for the game should now upload to the board.
  - Enjoy the game!
