@@ -28,7 +28,7 @@ This game runs on the Altera DE2-115.
 3. Reset game 
   - Key 0
     
-## Troubleshooting
+## Troubleshooting in Eclipse
 ### ELF process failed
 ![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/64e848a2-e586-48fc-a1a0-836b11fca29c)
 - Click run
@@ -46,7 +46,7 @@ This game runs on the Altera DE2-115.
 ### BSP error
 ![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/487f85dd-3177-447c-b069-914981ddf773)
 
-- Right click blinky-sw_bsp
+- Right click blinky-sw_bsp folder on the left
 - Hover over NIOS II
 - Click "Generate QSF
 
