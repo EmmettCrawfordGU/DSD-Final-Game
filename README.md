@@ -33,6 +33,7 @@ This game runs on the Altera DE2-115.
 ![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/64e848a2-e586-48fc-a1a0-836b11fca29c)
 - Click run
 - Click run Configuration
+- Make sure you are under "Nios II Hardware" -> "blinly-sw Nios II Hardware" on the left side
 - Check "Enable browse for file system ELF file"
 - Click the ... button
 - Click DSD-Final-Game-main folder
