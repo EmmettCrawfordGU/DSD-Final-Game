@@ -74,7 +74,6 @@ This game runs on the Altera DE2-115.
 - Click game-sw.elf and press select on the bottom right
 - Click Apply Then Click Run 
 
-<<<<<<< HEAD
 =======
 ### BSP error
 ![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/487f85dd-3177-447c-b069-914981ddf773)
