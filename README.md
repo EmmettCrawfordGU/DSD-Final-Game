@@ -29,8 +29,8 @@ This game runs on the Altera DE2-115.
   - Key 0
     
 ## Troubleshooting
-![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/64e848a2-e586-48fc-a1a0-836b11fca29c)
 ### ELF process failed
+![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/64e848a2-e586-48fc-a1a0-836b11fca29c)
 - Click run
 - Click run Configuration
 - Check "Enable browse for file system ELF file"
@@ -43,6 +43,8 @@ This game runs on the Altera DE2-115.
 - Click Apply Then Click Run 
 
 ### BSP error
+![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/487f85dd-3177-447c-b069-914981ddf773)
+
 - Right click blinky-sw_bsp
 - Hover over NIOS II
 - Click "Generate QSF
