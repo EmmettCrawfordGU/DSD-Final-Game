@@ -84,20 +84,26 @@ This game runs on the Altera DE2-115.
 ## Troubleshooting Hardware
 ### Black bars on LCD
 - Go to the file hw.c on line 134 (should be in the function lcdInit on the line setTimer(LCD_TIMER,5000))
+![lcdInit](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/101604242/027f543b-7d12-4290-af4d-7396a66f1916)
 - Increase the value 5000 in that line in increments of 1000.
 - If that doesn't work, redownload the zip file and start from the beginning.
 
 ### Random characters printing on the LCD
 - Go to the file hw.c on line 204 (should be in the function lcdWrite on the line setTimer(LCD_TIMER,1000))
+![lcdWrite](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/101604242/81ae8bf3-dfd9-4c67-8f20-aa58fb19e221)
 - Increase the value 1000 in that line in increments of 500.
 - If that doesn't work, redownload the zip file and start from the beginning.
 
 ### Characters printing in the wrong spot 
 - Go to the file hw.c on line 159 (should be in the function lcdWrite on the line setTimer(LCD_TIMER,1000))
+![lcdSetAddr](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/101604242/e40a7efd-4e57-42a6-a767-2b08ba91826d)
 - Increase the value 1000 in that line in increments of 500.
 - If that doesn't work, redownload the zip file and start from the beginning.
 
 ### Timers are not working properly
 - If the timers are not working properly, check these following lines.
 - Make sure that you are setting a time (setTimer) and starting the timer (startTimer).
+![set and start timers](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/101604242/39011f4b-ac31-4b2c-87b0-5825b7ef56f9)
 - In the interrupt handlers (handleGameTimer & handleLCDTimer), make sure the interrupt is acknowledged by writing 0 to the proper timer base address in the function IOWR_ALTERA_AVALON_TIMER_STATUS.
+![Acknowledge](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/101604242/fa39118d-28b7-4394-96d9-f28e612fb1f5)
+
