@@ -64,7 +64,7 @@ This game runs on the Altera DE2-115.
 ![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/64e848a2-e586-48fc-a1a0-836b11fca29c)
 - Click run
 - Click run Configuration
-- Make sure you are under "Nios II Hardware" -> "blinly-sw Nios II Hardware" on the left side
+- Make sure you are under "Nios II Hardware" -> "game-sw Nios II Hardware" on the left side
 - Check "Enable browse for file system ELF file"
 - Click the ... button
 - Click DSD-Final-Game-main folder
@@ -77,6 +77,27 @@ This game runs on the Altera DE2-115.
 ### BSP error
 ![image](https://github.com/EmmettCrawfordGU/DSD-Final-Game/assets/97589878/487f85dd-3177-447c-b069-914981ddf773)
 
-- Right click blinky-sw_bsp folder on the left
+- Right click game-sw_bsp folder on the left
 - Hover over NIOS II
 - Click "Generate QSF"
+
+## Troubleshooting Hardware
+### Black bars on LCD
+- Go to the file hw.c on line 134 (should be in the function lcdInit on the line setTimer(LCD_TIMER,5000))
+- Increase the value 5000 in that line in increments of 1000.
+- If that doesn't work, redownload the zip file and start from the beginning.
+
+### Random characters printing on the LCD
+- Go to the file hw.c on line 204 (should be in the function lcdWrite on the line setTimer(LCD_TIMER,1000))
+- Increase the value 1000 in that line in increments of 500.
+- If that doesn't work, redownload the zip file and start from the beginning.
+
+### Characters printing in the wrong spot 
+- Go to the file hw.c on line 159 (should be in the function lcdWrite on the line setTimer(LCD_TIMER,1000))
+- Increase the value 1000 in that line in increments of 500.
+- If that doesn't work, redownload the zip file and start from the beginning.
+
+### Timers are not working properly
+- If the timers are not working properly, check these following lines.
+- Make sure that you are setting a time (setTimer) and starting the timer (startTimer).
+- In the interrupt handlers (handleGameTimer & handleLCDTimer), make sure the interrupt is acknowledged by writing 0 to the proper timer base address in the function IOWR_ALTERA_AVALON_TIMER_STATUS.
